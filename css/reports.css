@@ -27,10 +27,20 @@ main {
 
 #main > table {
   width: 100%;
-  border: 3px double black;
-  padding: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 3rem;
+  border-radius: 5px;
 }
 
-#main > table > thead {
+#main > table > thead > tr > td {
   font-size: 1.3rem;
+  border: 3px double #000000;
+  padding: 0.5rem;
+}
+
+#main > table > tbody > tr > td {
+  font-size: 1.1rem;
+  border: 3px double #000000;
+  padding: 0.5rem;
+  color: #757279;
 }
