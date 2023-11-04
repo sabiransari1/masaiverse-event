@@ -45,7 +45,7 @@ const filterDataFunc = (data) => {
     totalAge += Number(data[i].age);
   }
 
-  let AverageAgeGuestsNo = Math.ceil((totalAge / 100) * guestsNo);
+  let AverageAgeGuestsNo = Math.floor(totalAge / guestsNo);
 
   tbody.append(
     getTable(
@@ -76,7 +76,7 @@ const getTable = (
   professionalsNox.innerText = professionalsNo;
 
   let AverageAgeGuestsNox = document.createElement('td');
-  AverageAgeGuestsNox.innerText = AverageAgeGuestsNo;
+  AverageAgeGuestsNox.innerText = `${AverageAgeGuestsNo}%`;
 
   tr.append(guestsNox, studentsNox, professionalsNox, AverageAgeGuestsNox);
 
