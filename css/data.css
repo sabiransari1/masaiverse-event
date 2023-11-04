@@ -31,7 +31,8 @@ main {
   justify-content: space-around;
 }
 
-#functionality > select {
+#functionality > select,
+input {
   padding: 0.5rem;
   border-radius: 5px;
   font-size: 1.5rem;
