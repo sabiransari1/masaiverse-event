@@ -120,6 +120,11 @@ sortage.addEventListener('change', () => {
   order && (paramObj._order = order);
   order && (paramObj._sort = 'age');
 
+  if (!order) {
+    fetchData(url, queryparams);
+    return;
+  }
+
   const queryparams = new URLSearchParams(paramObj);
 
   fetchData(url, queryparams);
@@ -130,6 +135,11 @@ filterprofession.addEventListener('change', () => {
   let filter = filterprofession.value;
 
   filter && (paramObj.profession = filter);
+
+  if (!filter) {
+    fetchData(url, queryparams);
+    return;
+  }
 
   const queryparams = new URLSearchParams(paramObj);
 
