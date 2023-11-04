@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Masaiverse Event</title>
+    <link rel="stylesheet" href="./css/data.css" />
+  </head>
+  <body>
+    <!-- navbar  -->
+    <nav>
+      <div id="navbar">
+        <a href="./login.html">Login</a>
+        <a href="./data.html">Data</a>
+        <a href="./reports.html">Reports</a>
+      </div>
+    </nav>
+
+    <!-- main -->
+    <main>
+      <div id="functionality">
+        <select id="sortage">
+          <option value="">Sort By Order</option>
+          <option value="asc">Ascending</option>
+          <option value="desc">Descending</option>
+        </select>
+
+        <select id="filterprofession">
+          <option value="">Filter By Profession</option>
+          <option value="Student">Student</option>
+          <option value="Frontend">Frontend</option>
+          <option value="Backend">Backend</option>
+          <option value="FSD">FSD</option>
+        </select>
+      </div>
+
+      <div id="main"></div>
+
+      <div id="pagination">
+        <button id="pervious">Pervious</button>
+        <button id="showpage"></button>
+        <button id="next">Next</button>
+      </div>
+    </main>
+  </body>
+  <script src="./js/data.js"></script>
+</html>

@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#main {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#main > a > button:first-child {
+  margin-left: 1rem;
+}
+
+#main > a > button {
+  width: 200px;
+  padding: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 2rem;
+  background-color: wheat;
+}
+
+#main > a > button:hover {
+  background-color: white;
+}
