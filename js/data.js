@@ -118,7 +118,7 @@ const getCard = (id, img, name, age, place, batch_name, profession) => {
 search.addEventListener('change', () => {
   let search = search.value;
 
-  search && (paramObj.p = search);
+  search && (paramObj.p = search.toLowerCase());
 
   const queryparams = new URLSearchParams(paramObj);
 
