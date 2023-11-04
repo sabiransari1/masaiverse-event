@@ -144,17 +144,17 @@ sortage.addEventListener('change', () => {
   order && (paramObj._order = order);
   order && (paramObj._sort = 'age');
 
-  // if (!order) {
-  //   const paramObj = {
-  //     _limit: limit,
-  //     _page: page,
-  //   };
+  if (!order) {
+    const paramObj = {
+      _limit: limit,
+      _page: page,
+    };
 
-  //   const queryparams = new URLSearchParams(paramObj);
+    const queryparams = new URLSearchParams(paramObj);
 
-  //   fetchData(url, queryparams);
-  //   return;
-  // }
+    fetchData(url, queryparams);
+    return;
+  }
 
   const queryparams = new URLSearchParams(paramObj);
 
