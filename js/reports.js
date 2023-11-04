@@ -45,7 +45,7 @@ const filterDataFunc = (data) => {
     totalAge += Number(data[i].age);
   }
 
-  let AverageAgeGuestsNo = (totalAge / 100) * guestsNo;
+  let AverageAgeGuestsNo = Math.ceil((totalAge / 100) * guestsNo);
 
   tbody.append(
     getTable(
