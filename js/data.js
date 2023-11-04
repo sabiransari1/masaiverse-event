@@ -4,6 +4,7 @@ const limit = 5;
 let page = 1;
 const sortage = document.getElementById('sortage');
 const filterprofession = document.getElementById('filterprofession');
+const search = document.getElementById('search');
 const pervious = document.getElementById('pervious');
 const showpage = document.getElementById('showpage');
 const next = document.getElementById('next');
@@ -112,6 +113,17 @@ const getCard = (id, img, name, age, place, batch_name, profession) => {
 
   return cardDiv;
 };
+
+// search
+search.addEventListener('change', () => {
+  let search = search.value;
+
+  search && (paramObj.p = search);
+
+  const queryparams = new URLSearchParams(paramObj);
+
+  fetchData(url, queryparams);
+});
 
 // sort
 sortage.addEventListener('change', () => {
