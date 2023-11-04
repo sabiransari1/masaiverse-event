@@ -1,14 +1,12 @@
 const url = `https://masaiverse-event-json-server-sabiransari1.onrender.com`;
 const main = document.getElementById('main');
-const limit = 5;
-let page = 1;
 const sortage = document.getElementById('sortage');
 const filterprofession = document.getElementById('filterprofession');
 const search = document.getElementById('search');
 const pervious = document.getElementById('pervious');
 const showpage = document.getElementById('showpage');
 const next = document.getElementById('next');
-let userData = null;
+let userData = [];
 
 window.addEventListener('load', () => {
   const token = JSON.parse(localStorage.getItem('token')) || null;
@@ -19,14 +17,18 @@ window.addEventListener('load', () => {
   }
 
   fetchData(url);
+
+  showpage.innerText = 1;
 });
 
-showpage.innerText = page;
-
 const paramObj = {
-  _limit: limit,
-  _page: page,
+  _limit: 5,
+  _page: 1,
 };
+
+if (paramObj._page === 1) {
+  pervious.setAttribute('disabled', true);
+}
 
 const queryparams = new URLSearchParams(paramObj);
 
@@ -41,6 +43,7 @@ const fetchData = async (url, queryparams = {}) => {
     });
 
     let data = await res.json();
+
     userData = data;
 
     getData(data);
@@ -122,8 +125,8 @@ search.addEventListener('input', () => {
 
   if (!searchVal) {
     const paramObj = {
-      _limit: limit,
-      _page: page,
+      _limit: 5,
+      _page: 1,
     };
 
     const queryparams = new URLSearchParams(paramObj);
@@ -146,8 +149,8 @@ sortage.addEventListener('change', () => {
 
   if (!order) {
     const paramObj = {
-      _limit: limit,
-      _page: page,
+      _limit: 5,
+      _page: 1,
     };
 
     const queryparams = new URLSearchParams(paramObj);
@@ -169,8 +172,8 @@ filterprofession.addEventListener('change', () => {
 
   if (!filter) {
     const paramObj = {
-      _limit: limit,
-      _page: page,
+      _limit: 5,
+      _page: 1,
     };
 
     const queryparams = new URLSearchParams(paramObj);
@@ -185,32 +188,47 @@ filterprofession.addEventListener('change', () => {
 });
 
 // pagination
+// pervious
 pervious.addEventListener('click', () => {
-  page--;
+  paramObj._page = paramObj._page - 1;
+  showpage.innerText = paramObj._page;
 
-  if (page == 0) {
-    page = 1;
+  if (paramObj._page === 1) {
+    pervious.setAttribute('disabled', true);
+
+    showpage.innerText = 1;
+    paramObj._page = 1;
+
+    const queryparams = new URLSearchParams(paramObj);
+
+    fetchData(url, queryparams);
+    return;
   }
-
-  showpage.innerText = page;
 
   const queryparams = new URLSearchParams(paramObj);
 
   fetchData(url, queryparams);
 });
 
+// next
 next.addEventListener('click', () => {
-  page++;
-  showpage.innerText = page;
+  paramObj._page = paramObj._page + 1;
+  showpage.innerText = paramObj._page;
 
-  if (userData.length == 0) {
-    page = 1;
+  if (userData.length === 0) {
+    pervious.setAttribute('disabled', true);
+
+    showpage.innerText = 1;
+    paramObj._page = 1;
+
     const queryparams = new URLSearchParams(paramObj);
 
     fetchData(url, queryparams);
 
     return;
   }
+
+  pervious.removeAttribute('disabled');
 
   const queryparams = new URLSearchParams(paramObj);
 
