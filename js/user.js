@@ -39,8 +39,11 @@ const userPost = async (url, user) => {
     });
 
     let data = await res.json();
-    if (data) {
+
+    if (Object.keys(data).length) {
       alert('User Register Successfully');
+    } else {
+      alert('Something went wrong, Please try again');
     }
   } catch (error) {
     alert(error);

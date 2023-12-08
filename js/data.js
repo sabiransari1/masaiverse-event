@@ -22,7 +22,7 @@ window.addEventListener('load', () => {
 });
 
 const paramObj = {
-  _limit: 5,
+  _limit: 8,
   _page: 1,
 };
 
@@ -56,7 +56,7 @@ const fetchData = async (url, queryparams = {}) => {
 const getData = (data) => {
   main.innerHTML = null;
 
-  data.forEach((item) => {
+  data?.forEach((item) => {
     main.append(
       getCard(
         item.id,
@@ -125,7 +125,7 @@ search.addEventListener('input', () => {
 
   if (!searchVal) {
     const paramObj = {
-      _limit: 5,
+      _limit: 8,
       _page: 1,
     };
 
@@ -149,7 +149,7 @@ sortage.addEventListener('change', () => {
 
   if (!order) {
     const paramObj = {
-      _limit: 5,
+      _limit: 8,
       _page: 1,
     };
 
@@ -246,6 +246,7 @@ const deleteFunc = async (url, id) => {
     });
 
     let data = await res.json();
+
     alert('User Deleted Successfully');
 
     fetchData(url, queryparams);
